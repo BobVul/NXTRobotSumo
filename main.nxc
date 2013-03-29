@@ -1,0 +1,15 @@
+#define LIGHT_SENSOR_1 IN_1
+#define ULTRASONIC_SENSOR IN_3
+
+#define LEFT_MOTOR OUT_A
+#define RIGHT_MOTOR OUT_C
+
+//enemy position global variables
+float enemyAngle;  //increases clockwise, 0 and 360 are directly in front of robot
+float enemyDistance;
+
+task main() [
+
+}
+
+
