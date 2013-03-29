@@ -8,7 +8,7 @@
 float enemyAngle;  //increases clockwise, 0 and 360 are directly in front of robot
 float enemyDistance;
 
-task main() [
+task main() {
 
 }
 
