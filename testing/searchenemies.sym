@@ -1,0 +1,420 @@
+#SYMBOLS
+Index	Identifier	Type	Flag	Data	Size	RefCount
+0	__CLSWMutex0	9	0	0	4	2
+1	__scanUltrasonic_wait_now	5	1	4	4	3
+2	__RLSBmutex0	9	0	8	4	2
+3	__CLSRMutex0	9	0	12	4	2
+4	__CLSCSMutex0	9	0	16	4	2
+5	____RotateMotor1_wait_then	5	1	20	4	2
+6	____RotateMotor1_wait_now	5	1	24	4	3
+7	__scanUltrasonic_wait_then	5	1	28	4	2
+8	__ResetSensorMutex	9	0	32	4	2
+9	____ReadLSBytes0_wait_now	5	1	36	4	3
+10	__DU0SetSensorLowspeed_inline_SetSensorUltrasonic	5	1	40	4	2
+11	__D0SetSensorLowspeed_inline_SetSensorUltrasonic	6	1	44	4	3
+12	__signed_stack_001searchEnemies	6	1	48	4	6
+13	__signed_stack_001scanUltrasonic	6	1	52	4	2
+14	__DU0searchEnemies	5	1	56	4	4
+15	__D0scanUltrasonic	6	1	60	4	5
+16	____ReadLSBytes0_wait_then	5	1	64	4	2
+17	__D0searchEnemies	6	1	68	4	6
+18	__DU0scanUltrasonic	5	1	72	4	2
+19	__rotate_theAngle1	5	1	76	4	3
+20	__rotateMutex1	9	0	80	4	6
+21	__rotate_angle1	6	1	84	4	9
+22	__rotate_RotCount1	4	1	88	2	4
+23	____RotateMotor1_wait_ms	3	1	90	2	2
+24	__rotate_OldRotCount1	4	1	92	2	2
+25	__constValNeg360	4	0	94	2	1
+26	__scanUltrasonic_wait_ms	3	1	96	2	3
+27	____ReadLSBytes0_wait_ms	3	1	98	2	2
+28	__rotate_firstPort1	1	1	100	1	5
+29	__rotate_sync1	1	1	101	1	4
+30	__rotate_theOM1	1	1	102	1	7
+31	__zfsearchEnemies	1	1	103	1	4
+32	__rotate_stop1	1	1	104	1	4
+33	__rotate_turnpct1	2	1	105	1	5
+34	__PFTmp	1	1	106	1	1
+35	__rotate_theUF1	1	1	107	1	6
+36	__zfscanUltrasonic	1	1	108	1	5
+37	__scanUltrasonic_wait_return	1	1	109	1	3
+38	__SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_scanUltrasonic	1	1	110	1	2
+39	__SetSensorLowspeed_7qG2_bIsPowered_7qG2_000_inline_SetSensorUltrasonic_inline_scanUltrasonic	1	1	111	1	2
+40	__SetSensorLowspeed_7qG2_port_7qG2_000_inline_SetSensorUltrasonic_inline_scanUltrasonic	1	1	112	1	4
+41	__SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_scanUltrasonic	1	1	113	1	2
+42	__SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_scanUltrasonic	1	1	114	1	2
+43	__SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_scanUltrasonic	1	1	115	1	2
+44	__ResetSensor_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_scanUltrasonic	1	1	116	1	2
+45	__rotate_power1	1	1	117	1	6
+46	__zfSetSensorLowspeed_inline_SetSensorUltrasonic	1	1	118	1	2
+47	__searchEnemies_Spawner_return	1	1	119	1	1
+48	____initialize_global_data_return	1	1	120	1	3
+49	running	1	0	121	1	5
+50	__ResetSensorPort	1	1	122	1	3
+51	__constVal3	2	0	123	1	1
+52	__rotate_thePower1	2	1	124	1	4
+53	__rotate_rs1	1	1	125	1	2
+54	____ResetSensorSubroutine_return	1	1	126	1	3
+55	__ResetSensorTmp	1	1	127	1	2
+56	____RotateMotor1_wait_return	1	1	128	1	2
+57	__constVal1	2	0	129	1	12
+58	__constVal32	2	0	130	1	9
+59	__rotate_theTurnPct1	2	1	131	1	4
+60	____RotateMotor1_sign_tmp	2	1	132	1	4
+61	____RotateMotor1_return	1	1	133	1	5
+62	__constVal0	2	1	134	1	18
+63	__RLSBytesCount0	1	1	135	1	7
+64	__RLSBResult0	2	1	136	1	7
+65	__constVal63	2	0	137	1	1
+66	____ReadLSBytes0_wait_return	1	1	138	1	2
+67	__constVal96	2	0	139	1	4
+68	__RLSBIterations0	1	1	140	1	4
+69	__rotate_theRM1	1	1	141	1	4
+70	__rotate_theRVP1	1	1	142	1	4
+71	__rotate_theRVI1	1	1	143	1	4
+72	__rotate_theRVD1	1	1	144	1	4
+73	____ReadLSBytes0_return	1	1	145	1	3
+74	__scanUltrasonic_Spawner_return	1	1	146	1	1
+75	__rotate_theRS1	1	1	147	1	3
+76	__CLSCSArgs0	8	0	3	4	4
+77	__CLSCSArgs0.Result	2	1	148	1	4
+78	__CLSCSArgs0.Port	1	1	149	1	4
+79	__CLSCSArgs0.BytesReady	1	1	150	1	4
+80	__CLSWArgs0	8	0	4	12	5
+81	__CLSWArgs0.Result	2	1	152	1	5
+82	__CLSWArgs0.Port	1	1	153	1	5
+83	__CLSWArgs0.Buffer	7	0	154	4	5
+84	__CLSWArgs0.Buffer.Buffer_type	1	0	0	1	0
+85	__CLSWArgs0.ReturnLen	1	1	156	1	5
+86	__CLSRArgs0	8	0	4	12	5
+87	__CLSRArgs0.Result	2	1	160	1	5
+88	__CLSRArgs0.Port	1	1	161	1	5
+89	__CLSRArgs0.Buffer	7	0	162	4	5
+90	__CLSRArgs0.Buffer.Buffer_type	1	0	0	1	0
+91	__CLSRArgs0.BufferLen	1	1	164	1	5
+92	__RLSBbufLSWrite1	7	0	166	4	1
+93	__RLSBbufLSWrite1.__RLSBbufLSWrite1_type	1	0	0	1	0
+94	__rotate_ports1	7	0	168	4	8
+95	__rotate_ports1.__rotate_ports1_type	1	0	0	1	0
+96	__RLSReadBuf0	7	0	170	4	8
+97	__RLSReadBuf0.__RLSReadBuf0_type	1	0	0	1	0
+98	__RLSLastGoodRead0	7	0	172	4	2
+99	__RLSLastGoodRead0.__RLSLastGoodRead0_type	1	0	0	1	0
+#SOURCES
+Clump	Line	PC	Source
+0	8	0	#line 8 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+0	9	0		subcall __initialize_global_data, ____initialize_global_data_return
+0	8	2	#line 8 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+0	9	2	#line 9 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+0	10	2		subcall __searchEnemies_Spawner, __searchEnemies_Spawner_return
+0	9	4	#line 9 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+0	10	4		exit -1, -1
+1	4529	0		brtst 4, __rotate_Done1, __rotate_angle1
+1	4530	3		set ____RotateMotor1_sign_tmp, 0
+1	4530	6		brtst EQ, __sign_1, __rotate_angle1
+1	4530	9		set ____RotateMotor1_sign_tmp, -1
+1	4530	12		brtst LT, __sign_1, __rotate_angle1
+1	4530	15		set ____RotateMotor1_sign_tmp, 1
+1	4530	18	__sign_1:	mov __rotate_thePower1, ____RotateMotor1_sign_tmp
+1	4531	20		mov __rotate_theAngle1, __rotate_angle1
+1	4531	22		brtst GTEQ, __abs_1, __rotate_angle1
+1	4531	25		neg __rotate_theAngle1, __rotate_angle1
+1	4532	28		mul __rotate_thePower1, __rotate_thePower1, __rotate_power1
+1	4534	32		set __rotate_theUF1, 23
+1	4535	35		brtst 4, __rotate_NoSync1, __rotate_sync1
+1	4536	38		set __rotate_theOM1, 7
+1	4537	41		set __rotate_theRM1, 2
+1	4538	44		mov __rotate_theTurnPct1, __rotate_turnpct1
+1	4539	46		brtst 4, __rotate_Start1, __rotate_theTurnPct1
+1	4540	49		add __rotate_theUF1, __rotate_theUF1, __constVal32
+1	4541	53		jmp __rotate_Start1
+1	4543	55		set __rotate_theOM1, 3
+1	4544	58		set __rotate_theRM1, 0
+1	4545	61		set __rotate_theTurnPct1, 0
+1	4547	64		set __rotate_theRS1, 32
+1	4548	67		setout __rotate_ports1, 1, __rotate_theOM1, 8, __rotate_theRM1, 5, __rotate_theAngle1, 6, __rotate_theRS1, 10, __rotate_theRVP1, 11, __rotate_theRVI1, 12, __rotate_theRVD1, 2, __rotate_thePower1, 7, __rotate_turnpct1, 0, __rotate_theUF1
+1	4551	90		index __rotate_firstPort1, __rotate_ports1, 65535
+1	4553	94		getout __rotate_power1, __rotate_firstPort1, 2
+1	4554	98		brtst 4, __rotate_doneRunning1, __rotate_power1
+1	4555	101		getout __rotate_rs1, __rotate_firstPort1, 6
+1	4556	105		brcmp 4, __rotate_Running1, __rotate_rs1, __constVal32
+1	4558	109		brtst 4, __rotate_Reset1, __rotate_stop1
+1	4560	112		set __rotate_theOM1, 7
+1	4561	115		set __rotate_theUF1, 7
+1	4562	118		setout __rotate_ports1, 1, __rotate_theOM1, 8, __constVal1, 6, __rotate_theRS1, 2, __constVal0, 5, __constVal0, 0, __rotate_theUF1
+1	4564	133		getout __rotate_RotCount1, __rotate_firstPort1, 14
+1	4566	137		mov __rotate_OldRotCount1, __rotate_RotCount1
+1	4567	139		set ____RotateMotor1_wait_ms, 50
+1	4567	142		subcall ____RotateMotor1_wait, ____RotateMotor1_wait_return
+1	4569	144		getout __rotate_RotCount1, __rotate_firstPort1, 14
+1	4570	148		brcmp 5, __rotate_Stabilize1, __rotate_OldRotCount1, __rotate_RotCount1
+1	4571	152		set __rotate_theOM1, 4
+1	4572	155		setout __rotate_ports1, 8, __rotate_theRM1, 6, __constVal0, 1, __rotate_theOM1, 0, __constVal1
+1	4575	166		brtst 4, __rotate_Done1, __rotate_theTurnPct1
+1	4576	169		setout __rotate_ports1, 0, __constVal32
+1	4578	174		subret ____RotateMotor1_return
+2	0	0		gettick ____RotateMotor1_wait_now
+2	0	2		add ____RotateMotor1_wait_then, ____RotateMotor1_wait_now, ____RotateMotor1_wait_ms
+2	0	6	____RotateMotor1_waiting:	gettick ____RotateMotor1_wait_now
+2	0	8		brcmp LT, ____RotateMotor1_waiting, ____RotateMotor1_wait_now, ____RotateMotor1_wait_then
+2	0	12		subret ____RotateMotor1_wait_return
+3	4885	0		setin __constVal1, __ResetSensorPort, 5
+3	4887	4		getin __ResetSensorTmp, __ResetSensorPort, 5
+3	4888	8		brtst 5, __SensorStillInvalid, __ResetSensorTmp
+3	4889	11		subret ____ResetSensorSubroutine_return
+4	5672	0	#pragma macro 25
+4	5672	0		acquire __CLSWMutex0
+4	5672	1		set __CLSWArgs0.Port, 0
+4	5672	4		mov __CLSWArgs0.ReturnLen, __RLSBytesCount0
+4	5672	6		mov __CLSWArgs0.Buffer, __RLSReadBuf0
+4	5672	8		syscall 21, __CLSWArgs0
+4	5672	11		mov __RLSBResult0, __CLSWArgs0.Result
+4	5672	13		release __CLSWMutex0
+4	5673	14	#line 5673 "NXTDefs.h"
+4	5674	14		brtst 4, __RLSBReturn0, __RLSBytesCount0
+4	5675	17		arrinit __RLSReadBuf0, __constVal0, __RLSBytesCount0
+4	5676	21		brtst 5, __RLSBError0, __RLSBResult0
+4	5677	24		set __RLSBIterations0, 4
+4	5679	27	#pragma macro 23
+4	5679	27		acquire __CLSCSMutex0
+4	5679	28		set __CLSCSArgs0.Port, 0
+4	5679	31		syscall 23, __CLSCSArgs0
+4	5679	34		mov __RLSBytesCount0, __CLSCSArgs0.BytesReady
+4	5679	36		mov __RLSBResult0, __CLSCSArgs0.Result
+4	5679	38		release __CLSCSMutex0
+4	5679	39	#line 5679 "NXTDefs.h"
+4	5680	39		sub __RLSBIterations0, __RLSBIterations0, __constVal1
+4	5681	43		brtst 2, __RLSBError0, __RLSBIterations0
+4	5682	46		brtst 0, __RLSBError0, __RLSBResult0
+4	5683	49		brtst 4, __RLSBReadyToRead0, __RLSBResult0
+4	5685	52		set ____ReadLSBytes0_wait_ms, 15
+4	5685	55		subcall ____ReadLSBytes0_wait, ____ReadLSBytes0_wait_return
+4	5686	57		jmp __RLSBDoCheckStatus0
+4	5689	59	#pragma macro 25
+4	5689	59		acquire __CLSRMutex0
+4	5689	60		set __CLSRArgs0.Port, 0
+4	5689	63		mov __CLSRArgs0.BufferLen, __RLSBytesCount0
+4	5689	65		syscall 22, __CLSRArgs0
+4	5689	68		mov __RLSReadBuf0, __CLSRArgs0.Buffer
+4	5689	70		mov __RLSBResult0, __CLSRArgs0.Result
+4	5689	72		release __CLSRMutex0
+4	5689	73	#line 5689 "NXTDefs.h"
+4	5690	73		brtst 5, __RLSBError0, __RLSBResult0
+4	5691	76		mov __RLSLastGoodRead0, __RLSReadBuf0
+4	5692	78		jmp __RLSBDone0
+4	5694	80		mov __RLSReadBuf0, __RLSLastGoodRead0
+4	5696	82		arrsize __RLSBytesCount0, __RLSReadBuf0
+4	5698	85		subret ____ReadLSBytes0_return
+5	0	0		gettick ____ReadLSBytes0_wait_now
+5	0	2		add ____ReadLSBytes0_wait_then, ____ReadLSBytes0_wait_now, ____ReadLSBytes0_wait_ms
+5	0	6	____ReadLSBytes0_waiting:	gettick ____ReadLSBytes0_wait_now
+5	0	8		brcmp LT, ____ReadLSBytes0_waiting, ____ReadLSBytes0_wait_now, ____ReadLSBytes0_wait_then
+5	0	12		subret ____ReadLSBytes0_wait_return
+6	0	0		subret __searchEnemies_Spawner_return
+7	0	0		exit 0, 1
+8	15	0	#line 15 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+8	15	0	#line 15 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+8	3768	0	#line 3768 "NXCDefs.h"
+8	3769	0		mov __SetSensorLowspeed_7qG2_port_7qG2_000_inline_SetSensorUltrasonic_inline_scanUltrasonic, __constVal0
+8	3768	2	#line 3768 "NXCDefs.h"
+8	3768	2	#line 3768 "NXCDefs.h"
+8	3769	2		mov __SetSensorLowspeed_7qG2_bIsPowered_7qG2_000_inline_SetSensorUltrasonic_inline_scanUltrasonic, __constVal1
+8	3758	4	#line 3758 "NXCDefs.h"
+8	3759	4		mov __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_scanUltrasonic, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_SetSensorUltrasonic_inline_scanUltrasonic
+8	3758	6	#line 3758 "NXCDefs.h"
+8	3758	6	#line 3758 "NXCDefs.h"
+8	3759	6		mov __DU0SetSensorLowspeed_inline_SetSensorUltrasonic, __SetSensorLowspeed_7qG2_bIsPowered_7qG2_000_inline_SetSensorUltrasonic_inline_scanUltrasonic
+8	3758	8	#line 3758 "NXCDefs.h"
+8	3759	8		tst 5, __zfSetSensorLowspeed_inline_SetSensorUltrasonic, __DU0SetSensorLowspeed_inline_SetSensorUltrasonic
+8	3758	11	#line 3758 "NXCDefs.h"
+8	3759	11		brtst 4, __001__001__NXC_Label_36, __zfSetSensorLowspeed_inline_SetSensorUltrasonic
+8	3758	14	#line 3758 "NXCDefs.h"
+8	3759	14		set __D0SetSensorLowspeed_inline_SetSensorUltrasonic, 11
+8	3758	17	#line 3758 "NXCDefs.h"
+8	3759	17		jmp __001__001__NXC_Label_37
+8	3758	19	#line 3758 "NXCDefs.h"
+8	3759	19		set __D0SetSensorLowspeed_inline_SetSensorUltrasonic, 10
+8	3758	22	#line 3758 "NXCDefs.h"
+8	3759	22		mov __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_scanUltrasonic, __D0SetSensorLowspeed_inline_SetSensorUltrasonic
+8	3663	24	#line 3663 "NXCDefs.h"
+8	3664	24		setin __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_scanUltrasonic, __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_scanUltrasonic, 0
+8	3663	28	#line 3663 "NXCDefs.h"
+8	3759	28	#line 3759 "NXCDefs.h"
+8	3759	28	#line 3759 "NXCDefs.h"
+8	3760	28		mov __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_scanUltrasonic, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_SetSensorUltrasonic_inline_scanUltrasonic
+8	3759	30	#line 3759 "NXCDefs.h"
+8	3759	30	#line 3759 "NXCDefs.h"
+8	3760	30		set __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_scanUltrasonic, 0
+8	3759	33	#line 3759 "NXCDefs.h"
+8	3676	33	#line 3676 "NXCDefs.h"
+8	3677	33		setin __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_scanUltrasonic, __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_scanUltrasonic, 1
+8	3676	37	#line 3676 "NXCDefs.h"
+8	3760	37	#line 3760 "NXCDefs.h"
+8	3760	37	#line 3760 "NXCDefs.h"
+8	3761	37		mov __ResetSensor_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_scanUltrasonic, __SetSensorLowspeed_7qG2_port_7qG2_000_inline_SetSensorUltrasonic_inline_scanUltrasonic
+8	3760	39	#line 3760 "NXCDefs.h"
+8	3694	39	#line 3694 "NXCDefs.h"
+8	3695	39	#pragma macro 4
+8	3695	39		acquire __ResetSensorMutex
+8	3695	40		mov __ResetSensorPort, __ResetSensor_7qG2_port_7qG2_000_inline_SetSensorLowspeed_inline_SetSensorUltrasonic_inline_scanUltrasonic
+8	3695	42		subcall __ResetSensorSubroutine, ____ResetSensorSubroutine_return
+8	3695	44		release __ResetSensorMutex
+8	3130	45	#line 3130 "NXCDefs.h"
+8	3694	45	#line 3694 "NXCDefs.h"
+8	3761	45	#line 3761 "NXCDefs.h"
+8	3768	45	#line 3768 "NXCDefs.h"
+8	17	45	#line 17 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+8	17	45	#line 17 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+8	18	45		mov __DU0scanUltrasonic, running
+8	18	47	#line 18 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+8	19	47		tst 5, __zfscanUltrasonic, __DU0scanUltrasonic
+8	18	50	#line 18 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+8	19	50		brtst 4, __NXC_Label_488, __zfscanUltrasonic
+8	18	53	#line 18 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+8	19	53	#pragma macro 26
+8	19	53		subcall __scanUltrasonic_wait, __scanUltrasonic_wait_return
+8	19	55		acquire __RLSBmutex0
+8	19	56		mov __RLSReadBuf0, __RLSBbufLSWrite1
+8	19	58		set __RLSBytesCount0, 1
+8	19	61		set __scanUltrasonic_wait_ms, 15
+8	19	64		subcall __scanUltrasonic_wait, __scanUltrasonic_wait_return
+8	19	66		subcall __ReadLSBytes0, ____ReadLSBytes0_return
+8	19	68		index __D0scanUltrasonic, __RLSReadBuf0, 65535
+8	19	72		release __RLSBmutex0
+8	3145	73	#line 3145 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+8	18	73	#line 18 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+8	19	73		mov __signed_stack_001scanUltrasonic, __D0scanUltrasonic
+8	18	75	#line 18 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+8	19	75		set __D0scanUltrasonic, 15
+8	18	78	#line 18 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+8	19	78		cmp 0, __zfscanUltrasonic, __signed_stack_001scanUltrasonic, __D0scanUltrasonic
+8	18	82	#line 18 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+8	19	82		mov __D0scanUltrasonic, __zfscanUltrasonic
+8	19	84	#line 19 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+8	20	84		brtst 4, __NXC_Label_493, __zfscanUltrasonic
+8	20	87	#line 20 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+8	21	87		set running, 0
+8	20	90	#line 20 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+8	20	90	#line 20 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+8	21	90	#line 21 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+8	22	90	#pragma macro 7
+8	22	90		setout __constVal1, 2, __constVal0, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
+8	3166	113	#line 3166 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+8	21	113	#line 21 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+8	23	113	#line 23 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+8	25	113	#line 25 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+8	26	113		jmp __NXC_Label_487
+8	25	115	#line 25 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+8	26	115		exit -1, -1
+9	0	0		gettick __scanUltrasonic_wait_now
+9	0	2		add __scanUltrasonic_wait_then, __scanUltrasonic_wait_now, __scanUltrasonic_wait_ms
+9	0	6	__scanUltrasonic_waiting:	gettick __scanUltrasonic_wait_now
+9	0	8		brcmp LT, __scanUltrasonic_waiting, __scanUltrasonic_wait_now, __scanUltrasonic_wait_then
+9	0	12		subret __scanUltrasonic_wait_return
+10	27	0	#line 27 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	28	0		subcall __scanUltrasonic_Spawner, __scanUltrasonic_Spawner_return
+10	27	2	#line 27 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	27	2	#line 27 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	28	2		set __signed_stack_001searchEnemies, 50
+10	27	5	#line 27 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	27	5	#line 27 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	28	5		set __D0searchEnemies, 180
+10	28	8	#line 28 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	29	8	#pragma macro 33
+10	29	8		acquire __rotateMutex1
+10	29	9		arrbuild __rotate_ports1, __constVal1
+10	29	13		mov __rotate_power1, __signed_stack_001searchEnemies
+10	29	15		mov __rotate_angle1, __D0searchEnemies
+10	29	17		mov __rotate_turnpct1, __constVal0
+10	29	19		mov __rotate_sync1, __constVal0
+10	29	21		mov __rotate_stop1, __constVal1
+10	29	23		mov __rotate_theRVP1, __constVal32
+10	29	25		mov __rotate_theRVI1, __constVal0
+10	29	27		mov __rotate_theRVD1, __constVal96
+10	29	29		subcall __RotateMotor1, ____RotateMotor1_return
+10	29	31		release __rotateMutex1
+10	3191	32	#line 3191 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	28	32	#line 28 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	28	32	#line 28 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	29	32		mov __DU0searchEnemies, running
+10	29	34	#line 29 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	30	34		tst 5, __zfsearchEnemies, __DU0searchEnemies
+10	29	37	#line 29 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	30	37		brtst 4, __NXC_Label_501, __zfsearchEnemies
+10	29	40	#line 29 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	30	40		set __signed_stack_001searchEnemies, 50
+10	29	43	#line 29 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	29	43	#line 29 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	30	43		mov __D0searchEnemies, __constValNeg360
+10	30	45	#line 30 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	31	45	#pragma macro 33
+10	31	45		acquire __rotateMutex1
+10	31	46		arrbuild __rotate_ports1, __constVal1
+10	31	50		mov __rotate_power1, __signed_stack_001searchEnemies
+10	31	52		mov __rotate_angle1, __D0searchEnemies
+10	31	54		mov __rotate_turnpct1, __constVal0
+10	31	56		mov __rotate_sync1, __constVal0
+10	31	58		mov __rotate_stop1, __constVal1
+10	31	60		mov __rotate_theRVP1, __constVal32
+10	31	62		mov __rotate_theRVI1, __constVal0
+10	31	64		mov __rotate_theRVD1, __constVal96
+10	31	66		subcall __RotateMotor1, ____RotateMotor1_return
+10	31	68		release __rotateMutex1
+10	3213	69	#line 3213 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	30	69	#line 30 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	30	69	#line 30 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	30	69	#line 30 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	31	69		not __DU0searchEnemies, running
+10	31	72	#line 31 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	32	72		tst 5, __zfsearchEnemies, __DU0searchEnemies
+10	31	75	#line 31 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	32	75		brtst 4, __NXC_Label_510, __zfsearchEnemies
+10	32	78	#line 32 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	33	78		jmp __NXC_Label_501
+10	32	80	#line 32 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	33	80	#line 33 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	33	80	#line 33 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	34	80		set __signed_stack_001searchEnemies, 50
+10	33	83	#line 33 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	33	83	#line 33 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	34	83		set __D0searchEnemies, 360
+10	34	86	#line 34 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	35	86	#pragma macro 33
+10	35	86		acquire __rotateMutex1
+10	35	87		arrbuild __rotate_ports1, __constVal1
+10	35	91		mov __rotate_power1, __signed_stack_001searchEnemies
+10	35	93		mov __rotate_angle1, __D0searchEnemies
+10	35	95		mov __rotate_turnpct1, __constVal0
+10	35	97		mov __rotate_sync1, __constVal0
+10	35	99		mov __rotate_stop1, __constVal1
+10	35	101		mov __rotate_theRVP1, __constVal32
+10	35	103		mov __rotate_theRVI1, __constVal0
+10	35	105		mov __rotate_theRVD1, __constVal96
+10	35	107		subcall __RotateMotor1, ____RotateMotor1_return
+10	35	109		release __rotateMutex1
+10	3241	110	#line 3241 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	34	110	#line 34 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	37	110	#line 37 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	38	110		jmp __NXC_Label_500
+10	37	112	#line 37 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+10	38	112		exit -1, -1
+11	0	0		subret __scanUltrasonic_Spawner_return
+12	0	0		exit 0, 1
+13	38	0	#line 38 "C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc"
+13	39	0		subret ____initialize_global_data_return
+#CLUMPS
+Clump	Name	Offset	File
+0	main	0	C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc
+1	__RotateMotor1	7	NXTDefs.h
+2	____RotateMotor1_wait	183	NXTDefs.h
+3	__ResetSensorSubroutine	197	NXTDefs.h
+4	__ReadLSBytes0	210	NXTDefs.h
+5	____ReadLSBytes0_wait	297	NXTDefs.h
+6	__searchEnemies_Returner	311	C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc
+7	__searchEnemies_Spawner	313	C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc
+8	scanUltrasonic	316	C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc
+9	__scanUltrasonic_wait	434	C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc
+10	searchEnemies	448	C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc
+11	__scanUltrasonic_Returner	563	C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc
+12	__scanUltrasonic_Spawner	565	C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc
+13	__initialize_global_data	568	C:\Users\Bob\Documents\NXC\RobotSumo\NXTRobotSumo\testing\searchenemies.nxc

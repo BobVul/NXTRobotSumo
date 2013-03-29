@@ -1,0 +1,37 @@
+task searchEnemies();
+task scanUltrasonic();
+
+// stopping tasks does not work with official firmware
+// using a global var as a temporary workaround
+bool running = true;
+
+task main() {
+    start searchEnemies;
+}
+
+task scanUltrasonic() {
+    // No SENSOR_* constant for ultrasonic??
+    // Apparently the US sensor is an I2C digital sensor
+    // which can be accessed via the Lowspeed module
+    SetSensorUltrasonic(IN_1);
+    
+    while (running) {
+        if (SensorUS(IN_1) < 15) {
+            running = false;
+            Off(OUT_B);
+        }
+    }
+}
+
+task searchEnemies() {
+    start scanUltrasonic;
+    RotateMotor(OUT_B, 50, 180);
+    while (running) {
+        RotateMotor(OUT_B, 50, -360);
+        if (!running) {
+            // A quick workaround. Do it properly!
+            break;
+        }
+        RotateMotor(OUT_B, 50, 360);
+    }
+}
