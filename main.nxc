@@ -1,15 +1,61 @@
-#define LIGHT_SENSOR_1 IN_1
-#define ULTRASONIC_SENSOR IN_3
+//main.nxc is the lowest level file, includes every other.
 
-#define LEFT_MOTOR OUT_A
-#define RIGHT_MOTOR OUT_C
+#include "movement.nxc"
+//#includes all other files aswell
 
-//enemy position global variables
-float enemyAngle;  //increases clockwise, 0 and 360 are directly in front of robot
-float enemyDistance;
+#define START_WAIT_TIME 3000
+
+long time0, timeC;
+int curAngle = 0;
+
+void initiatePosReg(void);
+void initialRoutine(void);
 
 task main() {
+       time0 = CurrentTick();
+       timeC = time0;
+       SetSensor(LIGHT_SENSOR_1, SENSOR_LIGHT);
+       SetSensorUltrasonic(ULTRASONIC_SENSOR);
+       
+       initiatePosReg();
+       initialRoutine();
 
+       //start movement;
+       //start light_sensor;
+       //start ultrasonic_sensor;
+       //plus start other tasks.
 }
 
+void initiatePosReg(void) {
+       PosRegEnable(ULTRASONIC_MOTOR);
+       PosRegEnable(LEFT_MOTOR);
+       PosRegEnable(RIGHT_MOTOR);
+       SetMotorRegulationTime(10);
+       PosRegSetMax(ULTRASONIC_MOTOR, MAX_ULTRASONIC_SPEED, MAX_ULTRASONIC_ACCELERATION);
+}
 
+void initialRoutine(void) {
+       //checks if the opponent is on the right
+       while (curAngle >= -180) { //curAngle will be a global variable in ultrasonic_sensor.nxc, not main.nxc!
+             if (SensorUS(ULTRASONIC_SENSOR) < RING_DIAMATER) {
+                   enemyFound(curAngle, SensorUS(ULTRASONIC_SENSOR));
+                   break;
+             }
+             PosRegSetAngle(ULTRASONIC_MOTOR, curAngle-ALLOWED_ULTRASONIC_ERROR);
+             curAngle -= ALLOWED_ULTRASONIC_ERROR;
+       }
+       //else, checks the left
+       if (!enemyPositionClear) {
+             curAngle = 0;
+             PosRegSetAngle(ULTRASONIC_MOTOR, curAngle);
+             while(curAngle <= 180) {
+                   if (SensorUS(ULTRASONIC_SENSOR) < RING_DIAMATER) {
+                         enemyFound(curAngle, SensorUS(ULTRASONIC_SENSOR));
+                         break;
+                   }
+                   PosRegSetAngle(ULTRASONIC_MOTOR, curAngle+ALLOWED_ULTRASONIC_ERROR);
+                   curAngle += ALLOWED_ULTRASONIC_ERROR;
+             }
+       }
+       while (((timeC = CurrentTick()) - time0) < START_WAIT_TIME);
+}
