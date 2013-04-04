@@ -1,0 +1,71 @@
+#ifndef MOVEMENT_NXC
+#define MOVEMENT_NXC 1
+
+#define TRUE 1
+#define FALSE 0
+
+//movement codes
+#define LEFT 1
+#define RIGHT 0
+
+//these codes will be in ultrasonic_sensor.nxc
+#define ALLOWED_ULTRASONIC_ERROR 10//degrees
+#define MAX_ULTRASONIC_SPEED 25
+#define MAX_ULTRASONIC_ACCELERATION 0 //maxAcceleration does not exist
+
+#define RING_DIAMATER 80//cm
+
+#define LIGHT_SENSOR_1 IN_1
+#define ULTRASONIC_SENSOR IN_3
+
+#define ULTRASONIC_MOTOR OUT_B
+#define LEFT_MOTOR OUT_A
+#define RIGHT_MOTOR OUT_C
+
+#define EDGE_ROTATE_SPEED 100
+#define NORMAL_ROTATE_SPEED 100
+#define ENGAGE_FW_SPEED 100
+#define NORMAL_FW_SPEED 100
+
+void lightSensorRoutine();
+void rotate(int direction, float degrees);
+void enemyFound(int angle, byte distance);
+
+//enemy position global variables
+int enemyPositionClear = FALSE;
+float enemyAngle; //0 to 180 is anticlockwise, 0 to -180 is clockwsie
+float enemyDistance;
+
+int engangingEnemy = FALSE;
+int lightSensor_found = FALSE;
+
+task movement() {
+     while (true) {
+           if (lightSensor_found) {
+                  lightSensorRoutine();
+           }
+     }
+}
+
+void lightSensorRoutine() {
+     if (!enemyPositionClear) {
+            rotate(LEFT, 180);
+     } else if (enemyAngle < 180) {
+            rotate(RIGHT, enemyAngle);
+     } else if (enemyAngle >= 180) {
+            rotate(LEFT, enemyAngle);
+     }
+     lightSensor_found = FALSE;
+}
+
+void rotate(int direction, float degrees) {
+
+}
+
+void enemyFound(int angle, byte distance) {
+     enemyAngle = angle;
+     enemyDistance = distance;
+     enemyPositionClear = TRUE;
+}
+
+#endif
