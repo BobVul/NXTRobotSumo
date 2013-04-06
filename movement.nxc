@@ -44,9 +44,10 @@ task movement() {
                   if (abs(enemyAngle) > 10) {
                          engageRotate(enemyAngle, enemyDistance);
                   } else {
-                         //goes forward for 100 ms
+                         //goes forward until it needs to do something else
                          OnFwd(BOTH_MOTORS, ENGAGE_FW_SPEED);
-                         Wait(100);
+                         while (engangingEnemy && (abs(enemyAngle) <= 10) && (!lightSensor_found));
+						 //until (!engangingEnemy || (abs(enemyAngle) > 10) || lightSensor_found);
                   }
            } else if (enemyPositionClear) {
                   //moves to enemy
