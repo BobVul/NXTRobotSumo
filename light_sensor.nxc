@@ -1,0 +1,11 @@
+#include "movement.nxc"
+
+#define LIGHT_TO_DARK_THRESHOLD 40
+
+task light_sensor() {
+     while (true) {
+           if (Sensor(LIGHT_SENSOR_1) > LIGHT_TO_DARK_THRESHOLD) {
+                  lightSensor_found = TRUE;
+           }
+     }
+}
