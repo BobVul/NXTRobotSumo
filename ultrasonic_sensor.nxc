@@ -1,0 +1,46 @@
+/*
+  Description of what it currently does, and what it should do (given enough time).
+  Currently simply spins around, 10 degrees at a time, in a full revolution.
+  
+  When this version has been tested and shown to work, it should simply focus on the
+  opponent as soon as it finds it, spinning 40-50 degrees in each direction around the opponent.
+
+*/
+
+#include "movement.nxc"
+
+#define ALLOWED_ULTRASONIC_ERROR 10//degrees
+#define MAX_ULTRASONIC_SPEED 25
+#define MAX_ULTRASONIC_ACCELERATION 0 //maxAcceleration does not exist
+
+//could potentially be used to turn motor faster, breaking the motor when it finds the opponent
+//then uses the time that it took to break as an indication of the opponent's angle. (testing required)
+#define TIME_PER_ALLOWED_ERROR 30//ms
+
+int curAngle = 0;
+int currentDirection = RIGHT;
+
+task ultrasonic_sensor() {
+      while (true) {
+            if (currentDirection == RIGHT) {
+                   //rotates clockwise
+                   while (curAngle > -180) {
+                         RotateMotor(ULTRASONIC_MOTOR, MAX_ULTRASONIC_SPEED, -ALLOWED_ULTRASONIC_ERROR);
+                         curAngle -= 10;
+                         if (SensorUS(ULTRASONIC_SENSOR) < RING_DIAMATER) {
+                               enemyFound(curAngle, SensorUS(ULTRASONIC_SENSOR));
+                         }
+                   }
+                   //brings the motor back to the starting position
+                   RotateMotor(ULTRASONIC_MOTOR, MAX_ULTRASONIC_SPEED, 180);
+                   while (curAngle < 180) {
+                         RotateMotor(ULTRASONIC_MOTOR, MAX_ULTRASONIC_SPEED, ALLOWED_ULTRASONIC_ERROR);
+                         curAngle += 10;
+                         if (SensorUS(ULTRASONIC_SENSOR) < RING_DIAMATER) {
+                               enemyFound(curAngle, SensorUS(ULTRASONIC_SENSOR));
+                         }
+                   }
+                   RotateMotor(ULTRASONIC_MOTOR, MAX_ULTRASONIC_SPEED, -180);
+            }
+      }
+}

@@ -8,11 +8,6 @@
 #define LEFT 1
 #define RIGHT 0
 
-//these codes will be in ultrasonic_sensor.nxc
-#define ALLOWED_ULTRASONIC_ERROR 10//degrees
-#define MAX_ULTRASONIC_SPEED 25
-#define MAX_ULTRASONIC_ACCELERATION 0 //maxAcceleration does not exist
-
 #define RING_DIAMATER 80//cm
 
 #define LIGHT_SENSOR_1 IN_1
@@ -21,22 +16,23 @@
 #define ULTRASONIC_MOTOR OUT_B
 #define LEFT_MOTOR OUT_A
 #define RIGHT_MOTOR OUT_C
+#define BOTH_MOTORS OUT_AC
 
-#define EDGE_ROTATE_SPEED 100
-#define NORMAL_ROTATE_SPEED 100
+#define ROTATE_SPEED 100
 #define ENGAGE_FW_SPEED 100
 #define NORMAL_FW_SPEED 100
 
-void lightSensorRoutine();
-void rotate(int direction, float degrees);
+void lightSensorRoutine(void);
+void rotate(int degrees);
+void engageRotate(int enemyAngle, int enemyDistance);
 void enemyFound(int angle, byte distance);
 
 //enemy position global variables
 int enemyPositionClear = FALSE;
-float enemyAngle; //0 to 180 is anticlockwise, 0 to -180 is clockwsie
-float enemyDistance;
+int enemyAngle; //0 to 180 is anticlockwise, 0 to -180 is clockwsie
+int enemyDistance;
 
-int engangingEnemy = FALSE;
+int engagingEnemy = FALSE;
 int lightSensor_found = FALSE;
 
 task movement() {
@@ -44,22 +40,59 @@ task movement() {
            if (lightSensor_found) {
                   lightSensorRoutine();
            }
+           if (engagingEnemy) {
+                  if (abs(enemyAngle) > 10) {
+                         engageRotate(enemyAngle, enemyDistance);
+                  } else {
+                         //goes forward until it needs to do something else
+                         OnFwd(BOTH_MOTORS, ENGAGE_FW_SPEED);
+                         while (engangingEnemy && (abs(enemyAngle) <= 10) && (!lightSensor_found));
+						 //until (!engangingEnemy || (abs(enemyAngle) > 10) || lightSensor_found);
+                  }
+           } else if (enemyPositionClear) {
+                  //moves to enemy
+                  //might be useful to handle a case where (enemyDistance < n : engageRotate())
+                  while (abs(enemyAngle) > 10) {
+                        rotate(enemyAngle);
+                        //this will likely  cause it to constantly rotate, unless ultrasonic is quick on updating. needs to have something to sort that out.
+                  }
+                  OnFwd(BOTH_MOTORS, ENGAGE_FW_SPEED);
+                  while (!engagingEnemy || (!lightSensor_found));
+                  //until(engagingEnemy || lightSensor_found);
+           } else {
+                  //simply moves forward until it finds the edge of the ring
+                  OnFwd(BOTH_MOTORS, NORMAL_FW_SPEED);
+                  while ((!engagingEnemy) || (!lightSensor_found));
+                  //until(engagingEnemy || lightSensor_found);
+           }
      }
 }
 
-void lightSensorRoutine() {
+void lightSensorRoutine(void) {
      if (!enemyPositionClear) {
-            rotate(LEFT, 180);
-     } else if (enemyAngle < 180) {
-            rotate(RIGHT, enemyAngle);
-     } else if (enemyAngle >= 180) {
-            rotate(LEFT, enemyAngle);
+            rotate(180);
+     } else if (abs(enemyAngle) <= 180) {
+            rotate(enemyAngle);
      }
      lightSensor_found = FALSE;
 }
 
-void rotate(int direction, float degrees) {
+void rotate(int degrees) {
+     //using rotateMotorEx, might not work exactly as expected (testing and callibration required).
+     if (degrees > 0 ) {
+           RotateMotorEx(BOTH_MOTORS, ROTATE_SPEED, degrees, -100, true, true);
+     } else if (degrees < 0) {
+           RotateMotorEx(BOTH_MOTORS, ROTATE_SPEED, degrees, 100, true, true);
+     }
+}
 
+void engageRotate(int enemyAngle, int enemyDistance) {
+     //currenly the same as rotate, change to a more appropriate function after testing
+      if (enemyAngle > 0 ) {
+           RotateMotorEx(BOTH_MOTORS, ROTATE_SPEED, enemyAngle, -100, true, true);
+     } else if (enemyAngle < 0) {
+           RotateMotorEx(BOTH_MOTORS, ROTATE_SPEED, enemyAngle, 100, true, true);
+     }
 }
 
 void enemyFound(int angle, byte distance) {

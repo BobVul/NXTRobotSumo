@@ -1,12 +1,13 @@
 //main.nxc is the lowest level file, includes every other.
 
 #include "movement.nxc"
+#include "light_sensor.nxc"
+#include "ultrasonic_sensor.nxc"
 //#includes all other files aswell
 
 #define START_WAIT_TIME 3000
 
 long time0, timeC;
-int curAngle = 0;
 
 void initiatePosReg(void);
 void initialRoutine(void);
@@ -20,8 +21,8 @@ task main() {
        initiatePosReg();
        initialRoutine();
 
-       //start movement;
-       //start light_sensor;
+       start movement;
+       start light_sensor;
        //start ultrasonic_sensor;
        //plus start other tasks.
 }
