@@ -1,0 +1,14 @@
+task main() {
+    int timeStart, timeFinish;
+    
+    timeStart = CurrentTick();
+    
+    RotateMotor(OUT_B, 50, -360);
+    
+    timeFinish = CurrentTick();
+    
+    ClearScreen();
+    NumOut(50, 30, timeFinish - timeStart);
+    
+    Wait(10000);
+}

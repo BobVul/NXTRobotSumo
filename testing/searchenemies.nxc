@@ -3,9 +3,23 @@ task scanUltrasonic();
 
 // stopping tasks does not work with official firmware
 // using a global var as a temporary workaround
+
+#define TIME_PER_DEGREE 3.86
+
+#define CLOCKWISE 1
+#define ANTICLOCKWISE 0
+
+int calculateAngle(void);
+
 bool running = true;
 
+long time0, timeC;
+long currentDirection;
+int angle;
+long currentTickTemp;
+
 task main() {
+    ClearScreen();
     start searchEnemies;
 }
 
@@ -14,24 +28,54 @@ task scanUltrasonic() {
     // Apparently the US sensor is an I2C digital sensor
     // which can be accessed via the Lowspeed module
     SetSensorUltrasonic(IN_1);
-    
     while (running) {
+        ClearScreen();
+        NumOut(50, 30, MotorTachoCount(OUT_B) + 180);
         if (SensorUS(IN_1) < 15) {
+            currentTickTemp = CurrentTick();
+            timeC = CurrentTick() - time0;
             running = false;
             Off(OUT_B);
+            //angle = calculateAngle();
+            //NumOut(50, 30, angle);
+            Wait(1000000);
         }
     }
 }
 
 task searchEnemies() {
     start scanUltrasonic;
-    RotateMotor(OUT_B, 50, 180);
+    //RotateMotor(OUT_B, 50, 180);
     while (running) {
-        RotateMotor(OUT_B, 50, -360);
+        currentDirection = ANTICLOCKWISE;
+        time0 = CurrentTick();
+        RotateMotor(OUT_B, 25, -360);
         if (!running) {
             // A quick workaround. Do it properly!
             break;
         }
-        RotateMotor(OUT_B, 50, 360);
+        Wait(5000);
+        currentDirection = CLOCKWISE;
+//        ClearScreen();
+//        NumOut(0, 30, time0);
+        time0 = CurrentTick();
+//        NumOut(0, 20, time0);
+        RotateMotor(OUT_B, 25, 360);
+        Wait(5000);
+//        Wait(100000);
     }
+}
+
+int calculateAngle(void) {
+    float tempAngle;
+    if (currentDirection == ANTICLOCKWISE) {
+        tempAngle = 180 - timeC / TIME_PER_DEGREE;       
+    } else if (currentDirection == CLOCKWISE) {
+        tempAngle = -180 + timeC / TIME_PER_DEGREE;
+        NumOut(50, 40, timeC);
+        NumOut(50, 50, timeC / TIME_PER_DEGREE);
+        NumOut(00, 50, currentTickTemp);
+        NumOut(00, 40, CurrentTick());
+    }
+    return floor(tempAngle);
 }
