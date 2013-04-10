@@ -8,7 +8,7 @@
 #define LEFT 1
 #define RIGHT 0
 
-#define RING_DIAMATER 80//cm
+#define RING_DIAMETER 40//cm
 
 #define LIGHT_SENSOR_1 IN_1
 #define ULTRASONIC_SENSOR IN_3
@@ -28,9 +28,9 @@ void engageRotate(int enemyAngle, int enemyDistance);
 void enemyFound(int angle, byte distance);
 
 //enemy position global variables
-int enemyPositionClear = FALSE;
-int enemyAngle; //0 to 180 is anticlockwise, 0 to -180 is clockwsie
-int enemyDistance;
+int enemyPositionClear = TRUE; //quick workaround, later would be better to introduce a timer. If not updating within 1 second, variable is false
+int enemyAngle; //0 to 180 is clockwise, 0 to -180 is anticlockwsie
+byte enemyDistance;
 
 int engagingEnemy = FALSE;
 int lightSensor_found = FALSE;
@@ -41,23 +41,24 @@ task movement() {
                   lightSensorRoutine();
            }
            if (engagingEnemy) {
-                  if (abs(enemyAngle) > 10) {
+                  if (abs(enemyAngle) > 20) {
                          engageRotate(enemyAngle, enemyDistance);
                   } else {
                          //goes forward until it needs to do something else
                          OnFwd(BOTH_MOTORS, ENGAGE_FW_SPEED);
-                         while (engangingEnemy && (abs(enemyAngle) <= 10) && (!lightSensor_found));
+                         while (engagingEnemy && (abs(enemyAngle) <= 20) && (!lightSensor_found));
 						 //until (!engangingEnemy || (abs(enemyAngle) > 10) || lightSensor_found);
                   }
            } else if (enemyPositionClear) {
                   //moves to enemy
                   //might be useful to handle a case where (enemyDistance < n : engageRotate())
-                  while (abs(enemyAngle) > 10) {
+                  if (abs(enemyAngle) > 10) {
                         rotate(enemyAngle);
-                        //this will likely  cause it to constantly rotate, unless ultrasonic is quick on updating. needs to have something to sort that out.
+                        //ignore below, used to be a while loop --> would be better as a while loop.
+                        //this will likely  cause it to constantly rotate, if ultrasonic is quick on updating. needs to have something to sort that out.
                   }
                   OnFwd(BOTH_MOTORS, ENGAGE_FW_SPEED);
-                  while (!engagingEnemy || (!lightSensor_found));
+                  while (!engagingEnemy || (!lightSensor_found) || abs(enemyAngle <= 30));
                   //until(engagingEnemy || lightSensor_found);
            } else {
                   //simply moves forward until it finds the edge of the ring

@@ -17,17 +17,17 @@ task main() {
        timeC = time0;
        SetSensor(LIGHT_SENSOR_1, SENSOR_LIGHT);
        SetSensorUltrasonic(ULTRASONIC_SENSOR);
-       
-       initiatePosReg();
-       initialRoutine();
 
-       start movement;
        start light_sensor;
-       //start ultrasonic_sensor;
+       start ultrasonic_sensor;
        //plus start other tasks.
+       
+       while(((timeC = CurrentTick())-time0) < START_WAIT_TIME);
+       
+       start movement;
 }
 
-void initiatePosReg(void) {
+/*void initiatePosReg(void) {
        PosRegEnable(ULTRASONIC_MOTOR);
        PosRegEnable(LEFT_MOTOR);
        PosRegEnable(RIGHT_MOTOR);
@@ -59,4 +59,4 @@ void initialRoutine(void) {
              }
        }
        while (((timeC = CurrentTick()) - time0) < START_WAIT_TIME);
-}
+}*/
