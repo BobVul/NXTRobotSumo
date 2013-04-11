@@ -1,0 +1,17 @@
+task main() {
+    int rotation = 0;
+    SetSensor(IN_2, SENSOR_TOUCH);
+    
+    while (true) {
+        while (!SENSOR_2) { }
+    
+        OnFwd(OUT_A, 100);
+        OnRev(OUT_C, 100);
+    
+        while (SENSOR_2) { }
+    
+        Off(OUT_AC);
+        ClearScreen();
+        NumOut(50, 20, (rotation += MotorTachoCount(OUT_A)));
+    }
+}

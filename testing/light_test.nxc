@@ -1,0 +1,11 @@
+task main() {
+    SetSensorLight(IN_4);
+    SetSensor(IN_2, SENSOR_TOUCH);
+    
+    while (true) {
+        if (Sensor(IN_2)) {
+            ClearScreen();
+            NumOut(50, 30, Sensor(IN_4));
+        }
+    }
+}

@@ -15,7 +15,7 @@ void initialRoutine(void);
 task main() {
        time0 = CurrentTick();
        timeC = time0;
-       SetSensor(LIGHT_SENSOR_1, SENSOR_LIGHT);
+       SetSensorLight(LIGHT_SENSOR_1);
        SetSensorUltrasonic(ULTRASONIC_SENSOR);
 
        start light_sensor;

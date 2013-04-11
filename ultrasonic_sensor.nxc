@@ -7,7 +7,7 @@
 
 #include "movement.nxc"
 
-#define MAX_ULTRASONIC_SPEED 25
+#define MAX_ULTRASONIC_SPEED 40
 #define MAX_ULTRASONIC_ACCELERATION 0 //maxAcceleration does not exist
 
 task scanUltrasonic();
@@ -16,13 +16,14 @@ bool running = true;
 byte distance;
 
 task ultrasonic_sensor() {
+    RotateMotor(ULTRASONIC_MOTOR, MAX_ULTRASONIC_SPEED, -45);
     start scanUltrasonic;
     while (running) {
-        RotateMotor(ULTRASONIC_MOTOR, MAX_ULTRASONIC_SPEED, -360);
+        RotateMotor(ULTRASONIC_MOTOR, MAX_ULTRASONIC_SPEED, -220);
         //if (!running) break;
         Wait(200); //just to give time for motors to fully stop
 
-        RotateMotor(ULTRASONIC_MOTOR, MAX_ULTRASONIC_SPEED, 360);
+        RotateMotor(ULTRASONIC_MOTOR, MAX_ULTRASONIC_SPEED, 220);
         Wait(200);
     }
 }
@@ -32,6 +33,7 @@ task scanUltrasonic() {
         //ClearScreen();
         //NumOut(50, 30, MotorTachoCount(OUT_B) + 180);
         if ((distance = SensorUS(ULTRASONIC_SENSOR)) < RING_DIAMETER) {
+            PlayTone(TONE_A4, 10);
             enemyFound(MotorTachoCount(ULTRASONIC_MOTOR)+180, distance);
             //running = false;
             //Off(OUT_B);
