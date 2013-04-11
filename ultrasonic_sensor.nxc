@@ -1,46 +1,41 @@
 /*
-  Description of what it currently does, and what it should do (given enough time).
-  Currently simply spins around, 10 degrees at a time, in a full revolution.
+  Currently spins around 360 degrees at a time, searching for opponents
   
-  When this version has been tested and shown to work, it should simply focus on the
-  opponent as soon as it finds it, spinning 40-50 degrees in each direction around the opponent.
-
+  For the final competition, make sure to add features which allow it to lock on to a target,
+  then spin aroun 30-40 degrees in each direction, allowing it to update faster
 */
 
 #include "movement.nxc"
 
-#define ALLOWED_ULTRASONIC_ERROR 10//degrees
 #define MAX_ULTRASONIC_SPEED 25
 #define MAX_ULTRASONIC_ACCELERATION 0 //maxAcceleration does not exist
 
-//could potentially be used to turn motor faster, breaking the motor when it finds the opponent
-//then uses the time that it took to break as an indication of the opponent's angle. (testing required)
-#define TIME_PER_ALLOWED_ERROR 30//ms
+task scanUltrasonic();
 
-int curAngle = 0;
-int currentDirection = RIGHT;
+bool running = true;
+byte distance;
 
 task ultrasonic_sensor() {
-      while (true) {
-            if (currentDirection == RIGHT) {
-                   //rotates clockwise
-                   while (curAngle > -180) {
-                         RotateMotor(ULTRASONIC_MOTOR, MAX_ULTRASONIC_SPEED, -ALLOWED_ULTRASONIC_ERROR);
-                         curAngle -= 10;
-                         if (SensorUS(ULTRASONIC_SENSOR) < RING_DIAMATER) {
-                               enemyFound(curAngle, SensorUS(ULTRASONIC_SENSOR));
-                         }
-                   }
-                   //brings the motor back to the starting position
-                   RotateMotor(ULTRASONIC_MOTOR, MAX_ULTRASONIC_SPEED, 180);
-                   while (curAngle < 180) {
-                         RotateMotor(ULTRASONIC_MOTOR, MAX_ULTRASONIC_SPEED, ALLOWED_ULTRASONIC_ERROR);
-                         curAngle += 10;
-                         if (SensorUS(ULTRASONIC_SENSOR) < RING_DIAMATER) {
-                               enemyFound(curAngle, SensorUS(ULTRASONIC_SENSOR));
-                         }
-                   }
-                   RotateMotor(ULTRASONIC_MOTOR, MAX_ULTRASONIC_SPEED, -180);
-            }
-      }
+    start scanUltrasonic;
+    while (running) {
+        RotateMotor(ULTRASONIC_MOTOR, MAX_ULTRASONIC_SPEED, -360);
+        //if (!running) break;
+        Wait(200); //just to give time for motors to fully stop
+
+        RotateMotor(ULTRASONIC_MOTOR, MAX_ULTRASONIC_SPEED, 360);
+        Wait(200);
+    }
+}
+
+task scanUltrasonic() {
+    while (running) {
+        //ClearScreen();
+        //NumOut(50, 30, MotorTachoCount(OUT_B) + 180);
+        if ((distance = SensorUS(ULTRASONIC_SENSOR)) < RING_DIAMETER) {
+            enemyFound(MotorTachoCount(ULTRASONIC_MOTOR)+180, distance);
+            //running = false;
+            //Off(OUT_B);
+            //Wait(1000000);
+        }
+    }
 }
