@@ -58,12 +58,12 @@ task movement() {
                         //this will likely  cause it to constantly rotate, if ultrasonic is quick on updating. needs to have something to sort that out.
                   }
                   OnFwd(BOTH_MOTORS, ENGAGE_FW_SPEED);
-                  while (!engagingEnemy && (!lightSensor_found) && (abs(enemyAngle) <= 30));
+                  while (!engagingEnemy || (!lightSensor_found) || abs(enemyAngle <= 30));
                   //until(engagingEnemy || lightSensor_found);
            } else {
                   //simply moves forward until it finds the edge of the ring
                   OnFwd(BOTH_MOTORS, NORMAL_FW_SPEED);
-                  while ((!engagingEnemy) && (!lightSensor_found));
+                  while ((!engagingEnemy) || (!lightSensor_found));
                   //until(engagingEnemy || lightSensor_found);
            }
      }
