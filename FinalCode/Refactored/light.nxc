@@ -1,0 +1,16 @@
+#include "light.nxh"
+
+byte initial_light = 0;
+
+task ringEdgeDetection() {
+    initial_light = Sensor(LIGHT_SENSOR);
+     
+    while (true) {
+        if (Sensor(LIGHT_SENSOR) < (initial_light - LIGHT_TO_DARK_DIFFERENCE)) {
+            ringEdgeDetected = true;
+        }
+        else {
+            ringEdgeDetected = false;
+        }
+    }     
+}

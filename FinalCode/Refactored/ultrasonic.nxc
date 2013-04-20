@@ -1,0 +1,20 @@
+#include "ultrasonic.nxh"
+
+byte enemyDistance;
+
+// Updated enemyFound when there is an object in front within
+// ULTRASONIC_DETECTION_DISTANCE. This indicated that the opponent
+// robot is likely in front.
+task watchForEnemies() {
+    while (true) {
+        enemyDistance = SensorUS(ULTRASONIC_SENSOR);
+        if (enemyDistance < ULTRASONIC_DETECTION_DISTANCE) {
+            // Debugging tone. Kept since it does no harm, and gives us
+            // a better indication of what happens in the competition.
+            PlayTone(TONE_A4, 10);
+            enemyFound = true;
+        } else {
+            enemyFound = false;
+        }
+    }
+}

@@ -1,0 +1,20 @@
+#ifndef MOVEMENT_HEADER
+#define MOVEMENT_HEADER 1
+
+#define ANTICLOCKWISE 1
+#define CLOCKWISE 0
+
+#define LEFT_MOTOR OUT_A
+#define RIGHT_MOTOR OUT_C
+#define BOTH_MOTORS OUT_AC
+
+#define ROTATE_SPEED 100
+#define FORWARD_SPEED 100
+
+// Indicates the direction the robot will rotate in when
+// no enemy is found, or when the ring edge is hit.
+int rotateDirection;
+
+task movement();
+
+#endif

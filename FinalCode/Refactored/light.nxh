@@ -1,0 +1,12 @@
+#ifndef LIGHT_HEADER
+#define LIGHT_HEADER 1
+
+#define LIGHT_SENSOR IN_4
+
+#define LIGHT_TO_DARK_DIFFERENCE 10
+
+bool ringEdgeDetected;
+
+task ringEdgeDetection();
+
+#endif

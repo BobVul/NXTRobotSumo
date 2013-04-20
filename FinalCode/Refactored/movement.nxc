@@ -1,0 +1,43 @@
+#include "movement.nxh"
+#include "ultrasonic.nxh"
+#include "light.nxh"
+
+// Rotates (around) 180 degrees
+void retreatFromEdge(void);
+void searchForEnemy(void);
+
+task movement() {
+    start ringEdgeDetection;
+    start watchForEnemies;
+    while (true) {
+        if (ringEdgeDetected) {
+            retreatFromEdge();
+        } else if (!enemyFound) {
+            searchForEnemy();
+        }
+        //goes forward
+        OnFwd(BOTH_MOTORS, FORWARD_SPEED);
+        until(ringEdgeDetected || (!enemyFound));
+    }
+}
+
+void retreatFromEdge(void) {
+    OnRev(BOTH_MOTORS, FORWARD_SPEED);
+    Wait(200);
+    OnFwd(RIGHT_MOTOR, ROTATE_SPEED);
+    OnRev(LEFT_MOTOR, ROTATE_SPEED);
+    Wait(500);
+    Off(BOTH_MOTORS);
+}
+
+void searchForEnemy(void) {
+    if (rotateDirection == CLOCKWISE) {
+        OnFwd(RIGHT_MOTOR, ROTATE_SPEED);
+        OnRev(LEFT_MOTOR, ROTATE_SPEED);
+    } else {
+        OnFwd(LEFT_MOTOR, ROTATE_SPEED);
+        OnRev(RIGHT_MOTOR, ROTATE_SPEED);
+    }
+    until(enemyFound || ringEdgeDetected);
+    Off(BOTH_MOTORS);
+}

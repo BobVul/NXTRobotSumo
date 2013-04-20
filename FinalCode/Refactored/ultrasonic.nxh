@@ -1,0 +1,16 @@
+#ifndef ULTRASONIC_HEADER
+#define ULTRASONIC_HEADER 1
+
+#define ULTRASONIC_SENSOR IN_1
+
+#define ULTRASONIC_MOTOR OUT_B
+
+#define MAX_ULTRASONIC_MOTOR_SPEED 40
+
+#define ULTRASONIC_DETECTION_DISTANCE 40
+
+bool enemyFound;
+
+task watchForEnemies();
+
+#endif

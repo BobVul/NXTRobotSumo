@@ -1,0 +1,76 @@
+// Need to include other code files, since the IDE apparently
+// has no support for multi-file projects.
+#include "movement.nxc"
+#include "light.nxc"
+#include "ultrasonic.nxc"
+
+// Actual header files.
+#include "movement.nxh"
+#include "light.nxh"
+#include "ultrasonic.nxh"
+
+#define START_WAIT_TIME 3000
+
+// Scans with the ultrasonic sensor to set the initial direction
+// the robot should turn in, at the end of the wait period.
+void setInitialDirection(void);
+task initialUltrasonicScan();
+
+long programStartTime;
+// The direction the ultrasonic sensor is currently facing, relative
+// to the motor. Used to determine which side of the robot the
+// opponent is on.
+int ifFoundDirection = ANTICLOCKWISE;
+
+task main() {
+    programStartTime = CurrentTick();
+    SetSensorLight(LIGHT_SENSOR);
+    SetSensorUltrasonic(ULTRASONIC_SENSOR);
+
+    setInitialDirection();
+
+    Wait(START_WAIT_TIME - (CurrentTick()-programStartTime));
+
+    start movement;
+}
+
+// Rotates ultrasonic around, updating the rotateDirection variable
+// This allows the robot to know which direction to turn in initially
+// Afterwards, it spins to face forward
+void setInitialDirection(void) {
+    // Defined in movement.nxh, this indicates the default rotate
+    // direction when there is no opponent found or the ring edge
+    // is detected.
+    rotateDirection = CLOCKWISE;
+    
+    // Move it to face left, from the initial starting position facing
+    // backwards. Prevents self-detection.
+    RotateMotor(ULTRASONIC_MOTOR, MAX_ULTRASONIC_MOTOR_SPEED, -45);
+    
+    ifFoundDirection = ANTICLOCKWISE;
+    start initialUltrasonicScan;
+    RotateMotor(ULTRASONIC_MOTOR, MAX_ULTRASONIC_MOTOR_SPEED, -145);
+    Wait(100);
+    // Early abort if it finds something.
+    if (rotateDirection == ANTICLOCKWISE) {
+        stop initialUltrasonicScan;
+        return;
+    }
+    
+    ifFoundDirection = CLOCKWISE;
+    RotateMotor(ULTRASONIC_MOTOR, MAX_ULTRASONIC_MOTOR_SPEED, -90);
+    RotateMotor(ULTRASONIC_MOTOR, MAX_ULTRASONIC_MOTOR_SPEED, 90);
+    Wait(100);
+    stop initialUltrasonicScan;
+}
+
+task initialUltrasonicScan() {
+    while (true) {
+        if (SensorUS(ULTRASONIC_SENSOR) < ULTRASONIC_DETECTION_DISTANCE) {
+            // Debugging tone. Kept since it does no harm, and gives us
+            // a better indication of what happens in the competition.
+            PlayTone(TONE_A4, 100);
+            rotateDirection = ifFoundDirection;
+        }
+    }
+}
