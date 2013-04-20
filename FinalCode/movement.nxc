@@ -1,0 +1,66 @@
+#ifndef MOVEMENT_NXC
+#define MOVEMENT_NXC 1
+
+#define TRUE 1
+#define FALSE 0
+
+//movement codes
+#define ANTICLOCKWISE 1
+#define CLOCKWISE 0
+
+#define RING_DIAMETER 40//cm
+
+#define LIGHT_SENSOR_1 IN_4
+#define ULTRASONIC_SENSOR IN_1
+
+#define ULTRASONIC_MOTOR OUT_B
+#define LEFT_MOTOR OUT_A
+#define RIGHT_MOTOR OUT_C
+#define BOTH_MOTORS OUT_AC
+
+#define ROTATE_SPEED 100
+#define FORWARD_SPEED 100
+
+void lightSensorRoutine(void);
+void rotate(void);
+
+int rotateDirection = CLOCKWISE;
+int enemyFound = FALSE;
+int lightSensor_found = FALSE;
+
+task movement() {
+     while (true) {
+         if (lightSensor_found) {
+             lightSensorRoutine();
+         } else if (!enemyFound) {
+             rotate();
+         }
+         //goes forward
+         OnFwd(BOTH_MOTORS, FORWARD_SPEED);
+         until(lightSensor_found || (!enemyFound));
+     }
+}
+
+void lightSensorRoutine(void) {
+     //rotates (around) 180 degrees
+     OnRev(BOTH_MOTORS, FORWARD_SPEED);
+     Wait(200);
+     OnFwd(RIGHT_MOTOR, ROTATE_SPEED);
+     OnRev(LEFT_MOTOR, ROTATE_SPEED);
+     Wait(500);
+     lightSensor_found = FALSE;
+}
+
+void rotate(void) {
+     if (rotateDirection == CLOCKWISE) {
+          OnFwd(RIGHT_MOTOR, ROTATE_SPEED);
+          OnRev(LEFT_MOTOR, ROTATE_SPEED);
+     } else {
+          OnFwd(LEFT_MOTOR, ROTATE_SPEED);
+          OnRev(RIGHT_MOTOR, ROTATE_SPEED);
+     }
+     until(enemyFound || lightSensor_found);
+     Off(BOTH_MOTORS);
+}
+
+#endif
