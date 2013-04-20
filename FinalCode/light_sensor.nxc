@@ -1,0 +1,16 @@
+#include "movement.nxc"
+
+#define LIGHT_TO_DARK_THRESHOLD 40
+#define LIGHT_DIFFERENCE 10
+
+byte initial_light = 0;
+
+task light_sensor() {
+     initial_light = Sensor(LIGHT_SENSOR_1);
+     
+     while (true) {
+           if (Sensor(LIGHT_SENSOR_1) < (initial_light - LIGHT_DIFFERENCE)) {
+                  lightSensor_found = TRUE;
+           }
+     }     
+}

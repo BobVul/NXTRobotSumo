@@ -1,0 +1,58 @@
+//main.nxc is the lowest level file, includes every other.
+
+#include "movement.nxc"
+#include "light_sensor.nxc"
+#include "ultrasonic_sensor.nxc"
+//#includes all other files aswell
+
+#define START_WAIT_TIME 3000
+
+task scanUltrasonic();
+
+long time0;
+int ifFoundDirection = ANTICLOCKWISE;
+
+void initialRoutine(void);
+
+task main() {
+       time0 = CurrentTick();
+       SetSensorLight(LIGHT_SENSOR_1);
+       SetSensorUltrasonic(ULTRASONIC_SENSOR);
+       MotorTachoCount(ULTRASONIC_MOTOR);
+       
+       initialRoutine();
+
+       Wait(START_WAIT_TIME - (CurrentTick()-time0));
+       
+       start movement;
+       start light_sensor;
+       start ultrasonic_sensor;
+       //plus any other tasks
+}
+
+//Rotates ultrasonic around, updating the rotateDirection variable
+//This allows the robot to know which direction to turn in initially
+//Afterwards, it spins to face forward
+void initialRoutine(void) {
+    RotateMotor(ULTRASONIC_MOTOR, MAX_ULTRASONIC_SPEED, -45);
+    start scanUltrasonic;
+    RotateMotor(ULTRASONIC_MOTOR, MAX_ULTRASONIC_SPEED, -145);
+    Wait(100);
+    ifFoundDirection = CLOCKWISE;
+    if (rotateDirection == ANTICLOCKWISE) return;
+    RotateMotor(ULTRASONIC_MOTOR, MAX_ULTRASONIC_SPEED, -90);
+    RotateMotor(ULTRASONIC_MOTOR, MAX_ULTRASONIC_SPEED, 90);
+    Wait(100);
+    stop scanUltrasonic;
+}
+
+task scanUltrasonic() {
+    while (true) {
+          if (SensorUS(ULTRASONIC_SENSOR) < RING_DIAMETER) {
+              ClearScreen();
+              NumOut(50, 30, ifFoundDirection);
+              PlayTone(TONE_A4, 100);
+              rotateDirection = ifFoundDirection;
+        }
+    }
+}

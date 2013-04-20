@@ -1,0 +1,23 @@
+/*
+  Faces forward, and updates the enemyFound variable
+*/
+
+#include "movement.nxc"
+
+#define MAX_ULTRASONIC_SPEED 40
+
+byte enemyDistance;
+
+task ultrasonic_sensor() {
+    while (true) {
+        enemyDistance = SensorUS(ULTRASONIC_SENSOR);
+        if (enemyDistance < RING_DIAMETER) {
+            PlayTone(TONE_A4, 10);
+            enemyFound = TRUE;
+        } else {
+            enemyFound = FALSE;
+        }
+    }
+}
+
+
